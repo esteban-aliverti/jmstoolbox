@@ -785,6 +785,25 @@ public class JTBSessionContentViewPart {
             }
          }));
 
+         // // Track the column number where the user clicked...
+         // table.addMouseListener(new MouseAdapter() {
+         // public void mouseDown(MouseEvent event) {
+         // Point pt = new Point(event.x, event.y);
+         // TableItem item = table.getItem(pt);
+         // if (item != null) {
+         // int column = -1;
+         // for (int i = 0, n = table.getColumnCount(); i < n; i++) {
+         // Rectangle rect = item.getBounds(i);
+         // if (rect.contains(pt)) {
+         // column = i;
+         // System.out.println(column);
+         // break;
+         // }
+         // }
+         // }
+         // }
+         // });
+
          // Create periodic refresh Job
          AutoRefreshJob job = new AutoRefreshJob(sync,
                                                  eventBroker,
@@ -1682,10 +1701,13 @@ public class JTBSessionContentViewPart {
          } else {
 
             UserProperty u = c.getUserProperty();
-            col = createTableViewerColumn(tv, csManager.getUserPropertyDisplayName(u, true), u.getDisplayWidth(), SWT.NONE);
+            col =
+
+                     createTableViewerColumn(tv, csManager.getUserPropertyDisplayName(u, true), u.getDisplayWidth(), SWT.NONE);
             tvcList.add(col);
 
             col.setLabelProvider(new ColumnLabelProvider() {
+
                @Override
                public String getText(Object element) {
                   JTBMessage jtbMessage = (JTBMessage) element;
@@ -1712,6 +1734,7 @@ public class JTBSessionContentViewPart {
 
       }
       return tvcList;
+
    }
 
    private TableViewerColumn createTableViewerColumn(final TableViewer tableViewer,
